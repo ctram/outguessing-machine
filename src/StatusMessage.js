@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
-export class ScoreBoard extends Component {
-    constructor(props) {
-        super(props);
-    }
+export class StatusMessage extends Component {
 
     render() {
         let { stage } = this.props;
@@ -33,10 +30,4 @@ export class ScoreBoard extends Component {
             {partial}
         </div>
     }
-};
-
-ScoreBoard.defaultProps = {
-    roundNumber: 0,
-    scoreComputer: 0,
-    scoreHuman: 0
 };
