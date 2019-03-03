@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 export class Inputs extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         let { gameInSession } = this.props;
 

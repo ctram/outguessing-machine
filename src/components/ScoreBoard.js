@@ -21,10 +21,6 @@ InnerScore.defaultProps = {
 }
 
 export class ScoreBoard extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         let { roundNumber, scoreComputer, scoreHuman } = this.props;
 

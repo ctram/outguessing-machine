@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { ScoreBoard } from './ScoreBoard';
-import { Inputs } from './Inputs';
+
+import { Inputs } from './components/Inputs';
+import { ScoreBoard } from './components/ScoreBoard';
+import { StatusMessage } from './components/StatusMessage';
+
 import { OutguessingEngine } from './lib/outguessing-engine.js';
 import { StrategyTwoInARow } from './lib/strategies.js';
-import { StatusMessage } from './StatusMessage';
+
 import './App.css';
 
 class App extends Component {
