@@ -9,6 +9,11 @@ import { StrategyTwoInARow } from './lib/strategies.js';
 
 import './App.css';
 
+const STAGE_PRESTART = 'stagePrestart';
+const STAGE_HUMAN_GUESSES = 'stageHumanGuesses';
+const STAGE_REAVEL = 'stageReveal';
+const STAGE_END = 'stageEnd';
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -17,17 +22,22 @@ class App extends Component {
 
         this.outguessingEngine = new OutguessingEngine(strategies);
 
+        // stages: ['prestart', 'humanGuesses', 'reveal', 'end']
+        
         this.state = {
             gameInSession: false,
             roundNumber: 0,
             scoreHuman: 0,
             scoreComputer: 0,
-            stage: ''
+            stage: STAGE_PRESTART
         };
+
+        this.lastRoundNumber; = 10;
 
         this.clickStartButton = this.clickStartButton.bind(this);
         this.startGame = this.startGame.bind(this);
         this.computerGuesses = this.computerGuesses.bind(this);
+        this.handleHumanAction = this.handleHumanAction.bind(this);
     }
 
     clickStartButton() {
@@ -35,13 +45,14 @@ class App extends Component {
     }
 
     startGame() {
-        this.computerGuesses();
+        this.computersGuess = this.computerGuesses();
 
         this.setState({
             gameInSession: true,
             scoreHuman: 0,
             scoreComputer: 0,
-            stage: 'humanGuesses'
+            stage: STAGE_HUMAN_GUESSES,
+            roundNumber: 1
         });
     }
 
@@ -49,8 +60,20 @@ class App extends Component {
         this.nextGuess = this.outguessingEngine.guessHumansNextInput();
     }
 
+    handleHumanAction(humanChoice) {
+        let nextRoundNumber = this.state.roundNumber + 1;
+        let nextStage = nextRoundNumber <= this.lastRoundNumber ? STAGE_HUMAN_GUESSES : STAGE_END;
+        
+        this.setState({
+            humanChoice: humanChoice,
+            computerGuess: this.computerGuesses,
+            roundNumber: nextRoundNumber,
+            stage: nextStage
+        });
+    }
+
     render() {
-        let { gameInSession, stage } = this.state;
+        let { gameInSession, stage, humanChoice, computerGuess } = this.state;
 
         let startBtnClass = 'btn btn-success';
 
@@ -73,10 +96,14 @@ class App extends Component {
 
                 <ScoreBoard />
 
-                <StatusMessage stage={stage} />
+                <StatusMessage
+                    stage={stage}
+                    humanChoice={humanChoice}
+                    computerGuess={computerGuess}
+                />
 
                 {gameInSession ? (
-                    <Inputs />
+                    <Inputs handleHumanAction={this.handleHumanAction} />
                 ) : (
                     <button onClick={this.clickStartButton} className={startBtnClass}>
                         Start Game
