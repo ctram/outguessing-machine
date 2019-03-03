@@ -24,6 +24,10 @@ class App extends Component {
       scoreComputer: 0,
       stage: ''
     };
+
+    this.clickStartButton = this.clickStartButton.bind(this);
+    this.startGame = this.startGame.bind(this);
+    this.computerGuesses = this.computerGuesses.bind(this);
   }
 
   clickStartButton() {
