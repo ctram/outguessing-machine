@@ -61,7 +61,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Outguessing Machine</h1>
+          <h1>Mind Reading Machine</h1>
         </header>
         <p className="instructions text-left d-flex justify-content-center">
           <ul className="d-inline-block">
