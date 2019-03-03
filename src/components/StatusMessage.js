@@ -6,7 +6,7 @@ export class StatusMessage extends Component {
         let { stage } = this.props;
         let partial = null;
 
-        if (stage === STAGES.STAGE_PRESTART) {
+        if (stage === STAGES.STAGE_HUMAN_GUESSES) {
             partial = 'Machine has made a guess. Go ahead and click on a button.';
         } else if (stage === STAGES.STAGE_REAVEL) {
             partial = (
