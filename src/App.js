@@ -63,15 +63,13 @@ class App extends Component {
         <header className="App-header">
           <h1>Mind Reading Machine</h1>
         </header>
-        <p className="instructions text-left d-flex justify-content-center">
-          <ul className="d-inline-block">
-            <li>Click "Start Game".</li>
-            <li>The machine will guess whether you will click "1" or "0".</li>
-            <li>The machine receives a point if it guesses correctly.</li>
-            <li>Otherwise, you receive a point.</li>
-            <li>First to 10 points wins.</li>
-          </ul>
-        </p>
+        <ul className="d-inline-block instructions text-left">
+          <li>Click "Start Game".</li>
+          <li>The machine will guess whether you will click "1" or "0".</li>
+          <li>The machine receives a point if it guesses correctly.</li>
+          <li>Otherwise, you receive a point.</li>
+          <li>First to 10 points wins.</li>
+        </ul>
 
         <ScoreBoard />
 
