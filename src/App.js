@@ -7,12 +7,9 @@ import { StatusMessage } from './components/StatusMessage';
 import { OutguessingEngine } from './lib/outguessing-engine.js';
 import { StrategyTwoInARow } from './lib/strategies.js';
 
-import './App.css';
+import * as STAGES from './constants/stages';
 
-const STAGE_PRESTART = 'stagePrestart';
-const STAGE_HUMAN_GUESSES = 'stageHumanGuesses';
-const STAGE_REAVEL = 'stageReveal';
-const STAGE_END = 'stageEnd';
+import './App.css';
 
 class App extends Component {
     constructor(props) {
@@ -29,10 +26,10 @@ class App extends Component {
             roundNumber: 0,
             scoreHuman: 0,
             scoreComputer: 0,
-            stage: STAGE_PRESTART
+            stage: STAGES.STAGE_PRESTART
         };
 
-        this.lastRoundNumber; = 10;
+        this.maxRoundNumber = 10;
 
         this.clickStartButton = this.clickStartButton.bind(this);
         this.startGame = this.startGame.bind(this);
@@ -51,7 +48,7 @@ class App extends Component {
             gameInSession: true,
             scoreHuman: 0,
             scoreComputer: 0,
-            stage: STAGE_HUMAN_GUESSES,
+            stage: STAGES.STAGE_HUMAN_GUESSES,
             roundNumber: 1
         });
     }
@@ -62,7 +59,7 @@ class App extends Component {
 
     handleHumanAction(humanChoice) {
         let nextRoundNumber = this.state.roundNumber + 1;
-        let nextStage = nextRoundNumber <= this.lastRoundNumber ? STAGE_HUMAN_GUESSES : STAGE_END;
+        let nextStage = nextRoundNumber <= this.maxRoundNumber ? STAGES.STAGE_REAVEL : STAGES.STAGE_END;
         
         this.setState({
             humanChoice: humanChoice,
