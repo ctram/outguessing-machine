@@ -20,7 +20,7 @@ class App extends Component {
       scoreHuman: 0,
       scoreComputer: 0,
       stage: ''
-    }
+    };
   }
 
   clickStartButton() {
@@ -31,7 +31,10 @@ class App extends Component {
     this.computerGuesses();
 
     this.setState({
-      gameInSession: true, scoreHuman: 0, scoreComputer: 0, stage: 'humanGuesses'
+      gameInSession: true,
+      scoreHuman: 0,
+      scoreComputer: 0,
+      stage: 'humanGuesses'
     });
   }
 
@@ -67,7 +70,13 @@ class App extends Component {
 
         <StatusMessage stage={stage} />
 
-        {gameInSession ? <Inputs /> : <button onClick={this.clickStartButton} className={startBtnClass}>Start Game</button>}
+        {gameInSession ? (
+          <Inputs />
+        ) : (
+          <button onClick={this.clickStartButton} className={startBtnClass}>
+            Start Game
+          </button>
+        )}
       </div>
     );
   }
