@@ -1,5 +1,4 @@
 export class OutguessingEngine {
-
     constructor(strategies = []) {
         this.humanLastMoves = [];
         this.strategies = [].concat(strategies);
@@ -15,6 +14,8 @@ export class OutguessingEngine {
             if (winningStrategy !== undefined && winningStrategy !== null) {
                 return true;
             }
+
+            return false;
         });
 
         if (winningStrategy !== undefined && winningStrategy !== null) {
@@ -29,6 +30,6 @@ export class OutguessingEngine {
 
         this.strategies.forEach(strategy => {
             strategy.rememberHumanInput(input);
-        })
+        });
     }
 }

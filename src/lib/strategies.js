@@ -1,9 +1,12 @@
-export class Strategy {
+class MethodNotImplementedError {
     constructor() {
+        this.message = 'Method not implemented.';
     }
+}
 
+export class Strategy {
     humanNextInput() {
-        throw ('function not implemented.')
+        throw new MethodNotImplementedError();
     }
 }
 
