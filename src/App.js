@@ -19,8 +19,6 @@ class App extends Component {
 
         this.outguessingEngine = new OutguessingEngine(strategies);
 
-        // stages: ['prestart', 'humanGuesses', 'reveal', 'end']
-        
         this.state = {
             gameInSession: false,
             roundNumber: 0,
@@ -42,8 +40,6 @@ class App extends Component {
     }
 
     startGame() {
-        this.computersGuess = this.computerGuesses();
-
         this.setState({
             gameInSession: true,
             scoreHuman: 0,
@@ -51,10 +47,6 @@ class App extends Component {
             stage: STAGES.STAGE_HUMAN_GUESSES,
             roundNumber: 1
         });
-    }
-
-    computerGuesses() {
-        this.nextGuess = this.outguessingEngine.guessHumansNextInput();
     }
 
     handleHumanAction(humanChoice) {
