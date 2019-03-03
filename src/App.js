@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { ScoreBoard } from './ScoreBoard';
 import { Inputs } from './Inputs';
-import { OutguessingEngine } from './lib/outguess-engine';
-import { StrategyTwoInARow } from './lib/strategies';
+import { OutguessingEngine } from './lib/outguessing-engine.js';
+import { StrategyTwoInARow } from './lib/strategies.js';
+import { StatusMessage } from './StatusMessage';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    strategies = [new StrategyTwoInARow()];
+    let strategies = [new StrategyTwoInARow()];
 
     this.outguessingEngine = new OutguessingEngine(strategies);
 
