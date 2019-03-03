@@ -7,7 +7,7 @@ export class OutguessingEngine {
     }
 
     guessHumansNextInput() {
-        winningStrategy = null;
+        let winningStrategy = null;
 
         this.strategies.some(strategy => {
             winningStrategy = strategy.humanNextInput(this.humanLastMoves);
