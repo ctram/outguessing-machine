@@ -12,12 +12,16 @@ export class StatusMessage extends Component {
             partial = 'Machine has made a guess. Go ahead and click on a button.';
         } else if (stage === STAGES.STAGE_REAVEL) {
             partial = (
-                <div>
-                    <h4>Machine Guessed</h4>
-                    <p>{this.props.computerGuess ? '1' : '0'}</p>
+                <div className="d-flex flex-row justify-content-center">
+                    <div className="guess">
+                        <h4>Machine Guessed</h4>
+                        <p>{this.props.computerGuess ? '1' : '0'}</p>
+                    </div>
 
-                    <h4>Human Guessed</h4>
-                    <p>{this.props.humanGuess ? '1' : '0'}</p>
+                    <div className="guess">
+                        <h4>Human Guessed</h4>
+                        <p>{this.props.humanGuess ? '1' : '0'}</p>
+                    </div>
                 </div>
             );
         } else if (stage === STAGES.STAGE_END) {
