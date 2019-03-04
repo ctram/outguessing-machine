@@ -49,16 +49,14 @@ class App extends Component {
     }
 
     handleHumanAction(humanChoice) {
-        let { scoreComputer, scoreHuman, roundNumber } = this.state;
+        let { scoreComputer, scoreHuman } = this.state;
 
-        let nextRoundNumber = roundNumber + 1;
-        let nextStage =
-            nextRoundNumber <= this.maxRoundNumber ? STAGES.STAGE_REAVEL : STAGES.STAGE_END;
+        let nextStage = STAGES.STAGE_REAVEL;
         let computerGuess = this.outguessingEngine.guessHumansNextInput();
 
         if (humanChoice === computerGuess) {
             scoreComputer += 1;
-        } else {
+        } else {    
             scoreHuman += 1;
         }
 
@@ -72,7 +70,6 @@ class App extends Component {
             scoreComputer: scoreComputer,
             scoreHuman: scoreHuman,
             computerGuess: computerGuess,
-            roundNumber: nextRoundNumber,
             stage: nextStage
         });
     }
