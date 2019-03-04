@@ -52,10 +52,10 @@ class App extends Component {
         let { scoreComputer, scoreHuman, roundNumber } = this.state;
 
         let nextRoundNumber = roundNumber + 1;
-        let nextStage = nextRoundNumber <= this.maxRoundNumber ? STAGES.STAGE_REAVEL : STAGES.STAGE_END;
+        let nextStage =
             nextRoundNumber <= this.maxRoundNumber ? STAGES.STAGE_REAVEL : STAGES.STAGE_END;
         let computerGuess = this.outguessingEngine.guessHumansNextInput();
-        
+
         if (humanChoice === computerGuess) {
             scoreComputer += 1;
         } else {
