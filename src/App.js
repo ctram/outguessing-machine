@@ -78,7 +78,15 @@ class App extends Component {
     }
 
     render() {
-        let { gameInSession, stage, humanChoice, computerGuess } = this.state;
+        let {
+            gameInSession,
+            stage,
+            humanChoice,
+            computerGuess,
+            roundNumber,
+            scoreHuman,
+            scoreComputer
+        } = this.state;
 
         let startBtnClass = 'btn btn-success';
 
@@ -99,7 +107,11 @@ class App extends Component {
                     <li>First to 10 points wins.</li>
                 </ul>
 
-                <ScoreBoard />
+                <ScoreBoard
+                    roundNumber={roundNumber}
+                    scoreComputer={scoreComputer}
+                    scoreHuman={scoreHuman}
+                />
 
                 <StatusMessage
                     stage={stage}
