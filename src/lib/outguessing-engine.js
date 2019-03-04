@@ -14,10 +14,21 @@ export class OutguessingEngine {
     }
 
     guessHumansNextInput() {
-        let matchingStrategy = this.findMatchingStrategy(this.humanPriorMoves);
+        let nextMove = null;
 
-        if (matchingStrategy) {
-            return matchingStrategy.guessHumansNextInput(this.humanPriorMoves);
+        this.strategies.some(strategy => {
+            let _nextMove = strategy.guessNextMove(this.humanPriorMoves);
+
+            if (_nextMove !== null) {
+                nextMove = _nextMove;
+                return true;
+            }
+
+            return false;
+        });
+
+        if (nextMove !== null) {
+            return nextMove;
         }
 
         return this.guessRandomly();
@@ -25,20 +36,5 @@ export class OutguessingEngine {
 
     rememberHumanInput(humanChoice) {
         this.humanPriorMoves.push(humanChoice);
-    }
-
-    findMatchingStrategy(humanPriorMoves) {
-        let matchingStrategy = null;
-
-        this.strategies.some(strategy => {
-            if (strategy.patternRegconized(humanPriorMoves)) {
-                matchingStrategy = strategy;
-                return true;
-            }
-
-            return false;
-        });
-
-        return matchingStrategy;
     }
 }
