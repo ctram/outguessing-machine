@@ -14,10 +14,10 @@ export class StatusMessage extends Component {
             partial = (
                 <div>
                     <h4>Machine Guessed</h4>
-                    <p>{this.props.computerGuess}</p>
+                    <p>{this.props.computerGuess ? '1' : '0'}</p>
 
                     <h4>Human Guessed</h4>
-                    <p>{this.props.humanGuess}</p>
+                    <p>{this.props.humanGuess ? '1' : '0'}</p>
                 </div>
             );
         } else if (stage === STAGES.STAGE_END) {
