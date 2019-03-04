@@ -17,11 +17,17 @@ export class OutguessingEngine {
         let nextMove = null;
 
         this.strategies.some(strategy => {
-            let _nextMove = strategy.guessNextMove(this.humanPriorMoves);
+            let _nextMove = null;
+            
+            try {
+                _nextMove = strategy.guessNextMove(this.humanPriorMoves);
+            } catch (e) {
+                console.error(e);
+            }
 
             if (_nextMove !== null) {
                 nextMove = _nextMove;
-                return true;
+                return true; // early break
             }
 
             return false;
