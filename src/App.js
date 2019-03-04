@@ -61,7 +61,10 @@ class App extends Component {
             scoreHuman += 1;
         }
 
-        this.updateMemory(humanChoice);
+        // Technically the machine needs to guess first, so the very first guess by the machine should truly be random
+        // therefore, we should not update the machine's memory until after the human has made at least one choice, otherwise
+        // there machine is 'cheating'
+        this.outguessingEngine.rememberHumanInput(humanChoice);
 
         this.setState({
             humanChoice: humanChoice,
