@@ -29,7 +29,7 @@ export class Strategy {
         });
 
         if (res) {
-            return true;
+            return this.nextGuess;
         }
 
         res =  this.invertMoves(subsetHumanPriorMoves).every((move, idx) => {
@@ -37,7 +37,7 @@ export class Strategy {
         });
 
         if (res) {
-            return false;
+            return !this.nextGuess;
         }
 
         return null;
