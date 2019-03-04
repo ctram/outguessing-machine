@@ -11,10 +11,6 @@ export class Strategy {
 }
 
 export class StrategyTwoInARow extends Strategy {
-    constructor() {
-        super(arguments);
-    }
-
     humanNextInput(humanLastMoves) {
         if (humanLastMoves.length < 2) {
             return;
