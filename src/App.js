@@ -31,7 +31,6 @@ class App extends Component {
 
         this.clickStartButton = this.clickStartButton.bind(this);
         this.startGame = this.startGame.bind(this);
-        this.computerGuesses = this.computerGuesses.bind(this);
         this.handleHumanAction = this.handleHumanAction.bind(this);
     }
 
