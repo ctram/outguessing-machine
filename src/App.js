@@ -56,7 +56,7 @@ class App extends Component {
 
         if (humanChoice === computerGuess) {
             scoreComputer += 1;
-        } else {    
+        } else {
             scoreHuman += 1;
         }
 
