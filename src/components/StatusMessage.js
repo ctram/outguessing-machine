@@ -3,15 +3,16 @@ import * as STAGES from '../constants/stages';
 
 export class StatusMessage extends Component {
     render() {
-        let { stage } = this.props;
-        let partial = null;
+        let { stage, isFinalRound } = this.props;
+        let partialMain = null;
+        let partialTryAgain = null;
 
         if (stage === STAGES.STAGE_PRESTART) {
             console.log('prestart, this is fine.');
         } else if (stage === STAGES.STAGE_HUMAN_GUESSES) {
-            partial = 'Machine has made a guess. Go ahead and click on a button.';
+            partialMain = 'Machine has made a guess. Go ahead and click on a button.';
         } else if (stage === STAGES.STAGE_REAVEL) {
-            partial = (
+            partialMain = (
                 <div className="d-flex flex-row justify-content-center">
                     <div className="guess">
                         <h4>Machine Guessed</h4>
@@ -25,11 +26,20 @@ export class StatusMessage extends Component {
                 </div>
             );
         } else if (stage === STAGES.STAGE_END) {
-            partial = <div className="text-capitalize">{this.props.winner} wins!</div>;
+            partialMain = <div className="text-capitalize">{this.props.winner} wins!</div>;
         } else {
             console.error("Whoops, no stage passed, this shouldn't happen.");
         }
 
-        return <div className="status-message">{partial}</div>;
+        if (stage === STAGES.STAGE_REAVEL && !isFinalRound) {
+            partialTryAgain = <p>Try again?</p>;
+        }
+
+        return (
+            <div className="status-message">
+                {partialMain}
+                {partialTryAgain}
+            </div>
+        );
     }
 }
