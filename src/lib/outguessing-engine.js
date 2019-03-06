@@ -10,7 +10,7 @@ export class OutguessingEngine {
     }
 
     guessRandomly() {
-        return Math.round(Math.random() * 1);
+        return !!Math.round(Math.random() * 1);
     }
 
     guessHumansNextInput() {
