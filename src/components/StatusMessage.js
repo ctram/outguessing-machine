@@ -21,7 +21,7 @@ export class StatusMessage extends Component {
 
                     <div className="guess">
                         <h4>Human Guessed</h4>
-                        <p>{this.props.humanGuess ? '1' : '0'}</p>
+                        <p>{this.props.humanChoice ? '1' : '0'}</p>
                     </div>
                 </div>
             );
