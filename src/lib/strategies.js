@@ -39,7 +39,7 @@ export class Strategy {
         }
 
         let res = subsetHumanPriorMoves.every((move, idx) => {
-            return move === subsetHumanPriorMoves[idx];
+            return move === this.pattern[idx];
         });
 
         if (res) {
@@ -47,7 +47,7 @@ export class Strategy {
         }
 
         res = this.invertMoves(subsetHumanPriorMoves).every((move, idx) => {
-            return move === subsetHumanPriorMoves[idx];
+            return move === !this.pattern[idx];
         });
 
         if (res) {
