@@ -53,7 +53,7 @@ class App extends Component {
 
         let nextStage = STAGES.STAGE_REAVEL;
         let computerGuess = this.outguessingEngine.guessHumansNextInput();
-
+        
         if (humanChoice === computerGuess) {
             scoreComputer += 1;
         } else {
@@ -90,7 +90,6 @@ class App extends Component {
         if (gameInSession) {
             startBtnClass += ' d-none';
         }
-
         return (
             <div className="App">
                 <header className="App-header">
