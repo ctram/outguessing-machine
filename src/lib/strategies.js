@@ -62,7 +62,7 @@ export class Strategy {
             throw new NotEnoughPriorMovesError();
         }
 
-        return humanPriorMoves.slice(this.lengthOfPattern * -1, humanPriorMoves.length);
+        return humanPriorMoves.slice(this.pattern.length * -1, humanPriorMoves.length);
     }
 }
 
