@@ -18,7 +18,7 @@ export class OutguessingEngine {
 
         this.strategies.some(strategy => {
             let _nextMove = null;
-            
+
             try {
                 _nextMove = strategy.guessNextMove(this.humanPriorMoves);
             } catch (e) {
