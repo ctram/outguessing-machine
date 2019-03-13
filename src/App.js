@@ -114,6 +114,7 @@ class App extends Component {
                     stage={stage}
                     humanChoice={humanChoice}
                     computerGuess={computerGuess}
+                    isFinalRound={roundNumber === this.maxRoundNumber}
                 />
 
                 {gameInSession ? (
