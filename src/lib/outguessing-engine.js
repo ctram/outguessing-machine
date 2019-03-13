@@ -5,7 +5,19 @@ const STRATEGIES = [new StrategyTwoInARow()];
 export class OutguessingEngine {
     constructor() {
         this.humanPriorMoves = [];
-        this.strategies = STRATEGIES;
+        
+        this.strategies = STRATEGIES.sort((a, b) => {
+            if (a.pattern.length < b.pattern.length) {
+                return 1;
+            }
+
+            if (a.pattern.length > b.pattern.length) {
+                return -1;
+            }
+
+            return 0;
+        });
+
         this.score = { computer: 0, human: 0 };
     }
 
