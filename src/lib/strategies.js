@@ -54,7 +54,7 @@ export class Strategy {
             return !this.nextGuess;
         }
 
-        return null;
+        return this.guessRandomly();
     }
 
     subsetHumanPriorMoves(humanPriorMoves) {
