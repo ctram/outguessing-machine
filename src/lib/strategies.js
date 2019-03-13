@@ -66,6 +66,9 @@ export class Strategy {
     }
 }
 
+// TODO: next; no need for classes, just use an object
+// TODO: next; add more strategy patterns;
+
 export class StrategyTwoInARow extends Strategy {
     constructor() {
         super();
