@@ -9,21 +9,13 @@ export class OutguessingEngine {
         this.score = { computer: 0, human: 0 };
     }
 
-    guessRandomly() {
-        return !!Math.round(Math.random() * 1);
-    }
-
     guessHumansNextInput() {
         let nextMove = null;
 
         this.strategies.some(strategy => {
             let _nextMove = null;
 
-            try {
-                _nextMove = strategy.guessNextMove(this.humanPriorMoves);
-            } catch (e) {
-                console.error(e);
-            }
+            _nextMove = strategy.guessNextMove(this.humanPriorMoves);
 
             if (_nextMove !== null) {
                 nextMove = _nextMove;
@@ -33,11 +25,7 @@ export class OutguessingEngine {
             return false;
         });
 
-        if (nextMove !== null) {
-            return nextMove;
-        }
-
-        return this.guessRandomly();
+        return nextMove;
     }
 
     rememberHumanInput(humanChoice) {

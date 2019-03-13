@@ -21,6 +21,10 @@ export class Strategy {
         });
     }
 
+    guessRandomly() {
+        return !!Math.round(Math.random() * 1);
+    }
+
     guessNextMove(humanPriorMoves) {
         let subsetHumanPriorMoves = null;
 
@@ -28,7 +32,7 @@ export class Strategy {
             subsetHumanPriorMoves = this.subsetHumanPriorMoves(humanPriorMoves);
         } catch (e) {
             if (e instanceof NotEnoughPriorMovesError) {
-                return null;
+                return this.guessRandomly();
             }
 
             throw e;
