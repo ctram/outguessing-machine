@@ -22,7 +22,17 @@ export class Strategy {
     }
 
     guessNextMove(humanPriorMoves) {
-        let subsetHumanPriorMoves = this.subsetHumanPriorMoves(humanPriorMoves);
+        let subsetHumanPriorMoves = null;
+
+        try {
+            subsetHumanPriorMoves = this.subsetHumanPriorMoves(humanPriorMoves);
+        } catch (e) {
+            if (e instanceof NotEnoughPriorMovesError) {
+                return null;
+            }
+
+            throw e;
+        }
 
         let res = subsetHumanPriorMoves.every((move, idx) => {
             return move === subsetHumanPriorMoves[idx];
@@ -32,7 +42,7 @@ export class Strategy {
             return this.nextGuess;
         }
 
-        res =  this.invertMoves(subsetHumanPriorMoves).every((move, idx) => {
+        res = this.invertMoves(subsetHumanPriorMoves).every((move, idx) => {
             return move === subsetHumanPriorMoves[idx];
         });
 
@@ -44,11 +54,11 @@ export class Strategy {
     }
 
     subsetHumanPriorMoves(humanPriorMoves) {
-        if (humanPriorMoves.length < this.lengthOfPattern) {
+        if (humanPriorMoves.length < this.pattern.length) {
             throw new NotEnoughPriorMovesError();
         }
 
-        humanPriorMoves.slice(this.lengthOfPattern * -1, humanPriorMoves.length);
+        return humanPriorMoves.slice(this.lengthOfPattern * -1, humanPriorMoves.length);
     }
 }
 
