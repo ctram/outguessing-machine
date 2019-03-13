@@ -1,6 +1,6 @@
-import { StrategyTwoInARow } from './strategies';
+import { StrategyThreeInARow, StrategyTwoInARow } from './strategies';
 
-const STRATEGIES = [new StrategyTwoInARow()];
+const STRATEGIES = [new StrategyTwoInARow(), new StrategyThreeInARow()];
 
 export class OutguessingEngine {
     constructor() {

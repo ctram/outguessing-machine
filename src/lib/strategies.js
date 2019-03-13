@@ -73,3 +73,10 @@ export class StrategyTwoInARow extends Strategy {
         this.nextGuess = false;
     }
 }
+export class StrategyThreeInARow extends Strategy {
+    constructor() {
+        super();
+        this.pattern = [true, true, true];
+        this.nextGuess = true;
+    }
+}
