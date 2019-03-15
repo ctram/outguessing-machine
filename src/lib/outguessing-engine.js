@@ -1,11 +1,18 @@
-import { StrategyThreeInARow, StrategyTwoInARow } from './strategies';
+import { STRATEGY_THREE_IN_A_ROW, STRATEGY_TWO_IN_A_ROW, Strategy } from './strategies';
 
-const STRATEGIES = [new StrategyTwoInARow(), new StrategyThreeInARow()];
+const STRATEGIES = [
+    new Strategy(
+        STRATEGY_THREE_IN_A_ROW
+    ),
+    new Strategy(
+        STRATEGY_TWO_IN_A_ROW
+    )
+];
 
 export class OutguessingEngine {
     constructor() {
         this.humanPriorMoves = [];
-        
+
         this.strategies = STRATEGIES.sort((a, b) => {
             if (a.pattern.length < b.pattern.length) {
                 return 1;

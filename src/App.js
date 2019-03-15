@@ -5,7 +5,6 @@ import { ScoreBoard } from './components/ScoreBoard';
 import { StatusMessage } from './components/StatusMessage';
 
 import { OutguessingEngine } from './lib/outguessing-engine.js';
-import { StrategyTwoInARow } from './lib/strategies.js';
 
 import * as STAGES from './constants/stages';
 
@@ -15,9 +14,7 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        let strategies = [new StrategyTwoInARow()];
-
-        this.outguessingEngine = new OutguessingEngine(strategies);
+        this.outguessingEngine = new OutguessingEngine();
 
         this.state = {
             gameInSession: false,
