@@ -11,6 +11,11 @@ class NotEnoughPriorMovesError {
 }
 
 export class Strategy {
+    constructor(strategy) {
+        this.pattern = strategy.pattern;
+        this.nextGuess = strategy.nextGuess;
+    }
+
     humanNextInput() {
         throw new MethodNotImplementedError();
     }
@@ -69,17 +74,12 @@ export class Strategy {
 // TODO: next; no need for classes, just use an object
 // TODO: next; add more strategy patterns;
 
-export class StrategyTwoInARow extends Strategy {
-    constructor() {
-        super();
-        this.pattern = [true, true];
-        this.nextGuess = false;
-    }
+export const STRATEGY_TWO_IN_A_ROW = {
+    pattern: [true, true],
+    nextGuess: false
 }
-export class StrategyThreeInARow extends Strategy {
-    constructor() {
-        super();
-        this.pattern = [true, true, true];
-        this.nextGuess = true;
-    }
+
+export const STRATEGY_THREE_IN_A_ROW = {
+    pattern: [true, true, true],
+    nextGuess: true
 }
